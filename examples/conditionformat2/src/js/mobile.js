@@ -276,7 +276,7 @@ jQuery.noConflict();
 
         for (var ti = 1; ti <= TEXT_ROW_NUM; ti++) {
             text_obj = CONFIG['text_row' + ti];
-            el_text = kintone.app.getFieldElements(text_obj.targetfield);
+            el_text = kintone.mobile.app.getFieldElements(text_obj.targetfield);
             if (!el_text) { continue; }
 
             for (var tn = 0; tn < el_text.length; tn++) {
@@ -300,7 +300,7 @@ jQuery.noConflict();
 
         for (var di = 1; di <= DATE_ROW_NUM; di++) {
             date_obj = CONFIG['date_row' + di];
-            el_date = kintone.app.getFieldElements(date_obj.targetfield);
+            el_date = kintone.mobile.app.getFieldElements(date_obj.targetfield);
             if (!el_date) { continue; }
 
             for (var dn = 0; dn < el_date.length; dn++) {
@@ -317,7 +317,7 @@ jQuery.noConflict();
 
         for (var ti = 1; ti <= TEXT_ROW_NUM; ti++) {
             text_obj = CONFIG['text_row' + ti];
-            el_text = kintone.app.record.getFieldElement(text_obj.targetfield);
+            el_text = kintone.mobile.app.record.getFieldElement(text_obj.targetfield);
             if (!el_text) { continue; }
 
             field_obj = record[text_obj.field];
@@ -339,7 +339,7 @@ jQuery.noConflict();
 
         for (var di = 1; di <= DATE_ROW_NUM; di++) {
             date_obj = CONFIG['date_row' + di];
-            el_date = kintone.app.record.getFieldElement(date_obj.targetfield);
+            el_date = kintone.mobile.app.record.getFieldElement(date_obj.targetfield);
             if (!el_date) { continue; }
 
             field_obj = record[date_obj.field];
@@ -349,27 +349,27 @@ jQuery.noConflict();
         }
     }
 
-    kintone.events.on('app.record.index.show', function(event) {
+    kintone.events.on('mobile.app.record.index.show', function(event) {
         if (event.records.length <= 0) { return; }
         checkIndexConditionFormat(event.records);
         RECORDS = event.records;
         return;
     });
 
-    kintone.events.on('app.record.index.delete.submit', function(event) {
+    kintone.events.on('mobile.app.record.index.delete.submit', function(event) {
         RECORDS = RECORDS.filter(function(record) {
             return record.$id.value != event.recordId
         });
         return;
     });
 
-    kintone.events.on('app.record.detail.show', function(event) {
+    kintone.events.on('mobile.app.record.detail.show', function(event) {
         if (!event.record) { return; }
         checkDetailConditionFormat(event.record);
         return;
     });
 
-    kintone.events.on('app.record.index.edit.submit.success', function(event) {
+    kintone.events.on('mobile.app.record.index.edit.submit.success', function(event) {
         if (!event.record) { return; }
         var index = -1
         RECORDS.forEach(function (record, i) {
