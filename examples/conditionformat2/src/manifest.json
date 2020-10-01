@@ -3,8 +3,8 @@
     "version": 3,
     "type": "APP",
     "name": {
-        "ja": "新条件書式プラグイン",
-        "en": "Conditional Format",
+        "ja": "新条件書式プラグイン - モバイル対応",
+        "en": "Conditional Format - mobile supported",
         "zh": "新条件格式插件"
     },
     "description": {
